@@ -1,0 +1,14 @@
+---
+es-AR:
+  settings:
+    hostings:
+      dolar_api_settings:
+        title: DolarAPI
+        description: Proveedor gratuito de tipo de cambio del Peso Argentino (ARS). Usa la cotización oficial del BCRA. No requiere API key.
+        status_active: DolarAPI está activo y funcionando
+        status_inactive: La conexión con DolarAPI falló
+        connection_failed: No se pudo conectar con DolarAPI
+        troubleshooting: Verificá tu conexión a internet. DolarAPI puede estar temporalmente fuera de servicio.
+      provider_selection:
+        providers:
+          dolar_api: DolarAPI (Argentina)

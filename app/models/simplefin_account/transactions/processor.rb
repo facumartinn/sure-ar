@@ -59,7 +59,7 @@ class SimplefinAccount::Transactions::Processor
     def family_categories
       @family_categories ||= begin
         if account.family.categories.none?
-          account.family.categories.bootstrap!
+          account.family.categories.bootstrap!(locale: account.family.locale)
         end
 
         account.family.categories

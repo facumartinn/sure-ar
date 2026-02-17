@@ -11,6 +11,8 @@ es:
       mint_import:
         date_format_label: Formato de fecha
       show:
+        bank_preset_title: Usar un preset de banco
+        bank_preset_description: Seleccioná tu banco para auto-configurar el mapeo de columnas.
         description: Selecciona las columnas que corresponden a cada campo en tu CSV.
         title: Configura tu importación
       trade_import:
@@ -72,6 +74,9 @@ es:
           delete: Eliminar
           view: Ver
       empty: Aún no hay importaciones.
+    apply_bank_preset:
+      success: Preset de banco aplicado correctamente.
+      unknown_preset: Preset de banco desconocido.
     new:
       description: Puedes importar manualmente varios tipos de datos mediante CSV o usar una de nuestras plantillas de importación como Mint.
       import_accounts: Importar cuentas

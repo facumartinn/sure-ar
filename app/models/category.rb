@@ -78,8 +78,14 @@ class Category < ApplicationRecord
       ]
     end
 
-    def bootstrap!
-      default_categories.each do |name, color, icon, classification|
+    def bootstrap!(locale: nil)
+      categories = if locale.to_s.start_with?("es-AR")
+        default_categories_ar
+      else
+        default_categories
+      end
+
+      categories.each do |name, color, icon, classification|
         find_or_create_by!(name: name) do |category|
           category.color = color
           category.classification = classification
@@ -136,6 +142,38 @@ class Category < ApplicationRecord
     end
 
     private
+      def default_categories_ar
+        [
+          [ "Ingresos", "#22c55e", "circle-dollar-sign", "income" ],
+          [ "Comida y Bebida", "#f97316", "utensils", "expense" ],
+          [ "Supermercado", "#407706", "shopping-bag", "expense" ],
+          [ "Compras", "#3b82f6", "shopping-cart", "expense" ],
+          [ "Transporte", "#0ea5e9", "bus", "expense" ],
+          [ "Viajes", "#2563eb", "plane", "expense" ],
+          [ "Entretenimiento", "#a855f7", "drama", "expense" ],
+          [ "Salud / Prepaga", "#4da568", "pill", "expense" ],
+          [ "Cuidado Personal", "#14b8a6", "scissors", "expense" ],
+          [ "Hogar", "#d97706", "hammer", "expense" ],
+          [ "Alquiler / Hipoteca", "#b45309", "home", "expense" ],
+          [ "Servicios (Luz, Gas, Agua)", "#eab308", "lightbulb", "expense" ],
+          [ "Suscripciones", "#6366f1", "wifi", "expense" ],
+          [ "Seguros", "#0284c7", "shield", "expense" ],
+          [ "Deportes y Fitness", "#10b981", "dumbbell", "expense" ],
+          [ "Regalos y Donaciones", "#61c9ea", "hand-helping", "expense" ],
+          [ "Impuestos / ARCA", "#dc2626", "landmark", "expense" ],
+          [ "Cuotas y Préstamos", "#e11d48", "credit-card", "expense" ],
+          [ "Servicios Profesionales", "#7c3aed", "briefcase", "expense" ],
+          [ "Comisiones y Cargos", "#6b7280", "receipt", "expense" ],
+          [ "Ahorro e Inversiones", "#059669", "piggy-bank", "expense" ],
+          [ investment_contributions_name, "#0d9488", "trending-up", "expense" ],
+          [ "Expensas", "#92400e", "building", "expense" ],
+          [ "Delivery", "#ea580c", "bike", "expense" ],
+          [ "Peajes", "#64748b", "car", "expense" ],
+          [ "Monotributo", "#991b1b", "receipt-text", "expense" ],
+          [ "Educación", "#7c3aed", "graduation-cap", "expense" ]
+        ]
+      end
+
       def default_categories
         [
           [ "Income", "#22c55e", "circle-dollar-sign", "income" ],

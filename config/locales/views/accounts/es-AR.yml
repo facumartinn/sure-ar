@@ -1,0 +1,8 @@
+---
+es-AR:
+  accounts:
+    subtype_regions:
+      ar: Argentina
+    types:
+      depository: Cuenta Bancaria
+      property: Inmueble

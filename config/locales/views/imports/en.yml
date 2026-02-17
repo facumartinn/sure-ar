@@ -25,6 +25,8 @@ en:
         process_button: Process Rules
         process_help: Click the button below to process your CSV and generate rule rows.
       show:
+        bank_preset_title: Use a bank preset
+        bank_preset_description: Select your bank to auto-configure the column mapping.
         description: Select the columns that correspond to each field in your CSV.
         title: Configure your import
       trade_import:
@@ -120,6 +122,9 @@ en:
       document_uploaded: Document uploaded successfully.
       document_upload_failed: We couldn't upload the document to the vector store. Please try again.
       document_provider_not_configured: No vector store is configured for document uploads.
+    apply_bank_preset:
+      success: Bank preset applied successfully.
+      unknown_preset: Unknown bank preset.
     show:
       finalize_upload: Please finalize your file upload.
       finalize_mappings: Please finalize your mappings before proceeding.

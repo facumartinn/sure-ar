@@ -1,7 +1,7 @@
 class ImportsController < ApplicationController
   include SettingsHelper
 
-  before_action :set_import, only: %i[show update publish destroy revert apply_template]
+  before_action :set_import, only: %i[show update publish destroy revert apply_template apply_bank_preset]
 
   def update
     # Handle both pdf_import[account_id] and import[account_id] param formats
@@ -112,6 +112,17 @@ class ImportsController < ApplicationController
       redirect_to import_configuration_path(@import), notice: "Template applied."
     else
       redirect_to import_configuration_path(@import), alert: "No template found, please manually configure your import."
+    end
+  end
+
+  def apply_bank_preset
+    preset_key = params[:bank_preset]
+
+    if preset_key.present? && Import::BankPreset.find(preset_key)
+      @import.apply_bank_preset!(preset_key)
+      redirect_to import_clean_path(@import), notice: t(".success")
+    else
+      redirect_to import_configuration_path(@import), alert: t(".unknown_preset")
     end
   end
 

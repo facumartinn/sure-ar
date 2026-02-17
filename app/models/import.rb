@@ -234,6 +234,15 @@ class Import < ApplicationRecord
           .first
   end
 
+  def apply_bank_preset!(preset_key)
+    preset = Import::BankPreset.find(preset_key)
+    return unless preset
+
+    update!(preset.template_attributes)
+    generate_rows_from_csv
+    reload.sync_mappings
+  end
+
   def apply_template!(import_template)
     update!(
       import_template.attributes.slice(

@@ -229,6 +229,7 @@ Rails.application.routes.draw do
       post :publish
       put :revert
       put :apply_template
+      put :apply_bank_preset
     end
 
     resource :upload, only: %i[show update], module: :import

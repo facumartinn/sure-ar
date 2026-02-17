@@ -166,7 +166,8 @@ module LanguagesHelper
     "pt-BR", # Brazilian Portuguese - 60 translation files
     "zh-CN", # Chinese (Simplified) - 59 translation files
     "zh-TW",  # Chinese (Traditional) - 63 translation files
-    "nl"   # Dutch - 73 translation files
+    "nl",  # Dutch - 73 translation files
+    "es-AR"  # Spanish (Argentina)
   ].freeze
 
   COUNTRY_MAPPING = {

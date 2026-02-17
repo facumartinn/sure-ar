@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
   end
 
   def bootstrap
-    Current.family.categories.bootstrap!
+    Current.family.categories.bootstrap!(locale: Current.family.locale)
 
     redirect_back_or_to categories_path, notice: t(".success")
   end
