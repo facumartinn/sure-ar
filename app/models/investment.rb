@@ -45,6 +45,13 @@ class Investment < ApplicationRecord
     "pillar_3a" => { short: "Pillar 3a", long: "Private Pension (Pillar 3a)", region: "eu", tax_treatment: :tax_deferred },
     "riester" => { short: "Riester", long: "Riester-Rente", region: "eu", tax_treatment: :tax_deferred },
 
+    # === Argentina ===
+    "cuenta_comitente" => { short: "Comitente", long: "Cuenta Comitente", region: "ar", tax_treatment: :taxable },
+    "fci" => { short: "FCI", long: "Fondo Común de Inversión", region: "ar", tax_treatment: :taxable },
+    "plazo_fijo" => { short: "Plazo Fijo", long: "Plazo Fijo", region: "ar", tax_treatment: :taxable },
+    "plazo_fijo_uva" => { short: "PF UVA", long: "Plazo Fijo UVA", region: "ar", tax_treatment: :taxable },
+    "cuenta_remunerada" => { short: "Cta Rem", long: "Cuenta Remunerada", region: "ar", tax_treatment: :taxable },
+
     # === Generic (available everywhere) ===
     "pension" => { short: "Pension", long: "Pension", region: nil, tax_treatment: :tax_deferred },
     "retirement" => { short: "Retirement", long: "Retirement Account", region: nil, tax_treatment: :tax_deferred },
@@ -82,7 +89,8 @@ class Investment < ApplicationRecord
       "CAD" => "ca",
       "AUD" => "au",
       "EUR" => "eu",
-      "CHF" => "eu"
+      "CHF" => "eu",
+      "ARS" => "ar"
     }.freeze
 
     # Returns subtypes grouped by region for use with grouped_options_for_select
@@ -92,7 +100,7 @@ class Investment < ApplicationRecord
       grouped = SUBTYPES.group_by { |_, v| v[:region] }
 
       # Build region order: user's region first (if known), then Generic, then others
-      other_regions = %w[us uk ca au eu] - [ user_region ].compact
+      other_regions = %w[us uk ca au eu ar] - [ user_region ].compact
       region_order = [ user_region, nil, *other_regions ].compact.uniq
 
       region_order.filter_map do |region|

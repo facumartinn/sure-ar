@@ -81,6 +81,10 @@ class Provider::Registry
       def yahoo_finance
         Provider::YahooFinance.new
       end
+
+      def dolar_api
+        Provider::DolarApi.new
+      end
   end
 
   def initialize(concept)
@@ -106,7 +110,7 @@ class Provider::Registry
     def available_providers
       case concept
       when :exchange_rates
-        %i[twelve_data yahoo_finance]
+        %i[twelve_data yahoo_finance dolar_api]
       when :securities
         %i[twelve_data yahoo_finance]
       when :llm

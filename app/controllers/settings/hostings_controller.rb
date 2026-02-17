@@ -21,6 +21,9 @@ class Settings::HostingsController < ApplicationController
     # Show Yahoo Finance settings if either provider is set to yahoo_finance
     @show_yahoo_finance_settings = exchange_rate_provider == "yahoo_finance" || securities_provider == "yahoo_finance"
 
+    # Show DolarAPI settings if exchange rate provider is set to dolar_api
+    @show_dolar_api_settings = exchange_rate_provider == "dolar_api"
+
     # Only fetch provider data if we're showing the section
     if @show_twelve_data_settings
       twelve_data_provider = Provider::Registry.get_provider(:twelve_data)
@@ -30,6 +33,10 @@ class Settings::HostingsController < ApplicationController
 
     if @show_yahoo_finance_settings
       @yahoo_finance_provider = Provider::Registry.get_provider(:yahoo_finance)
+    end
+
+    if @show_dolar_api_settings
+      @dolar_api_provider = Provider::Registry.get_provider(:dolar_api)
     end
   end
 
